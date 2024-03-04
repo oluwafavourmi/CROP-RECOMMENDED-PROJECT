@@ -5,19 +5,27 @@ model = joblib.load('crop_model.pkl')
 
 
 def predict_func(nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall):
-    input_array = np.array((nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall))
+    float_nitrogen = float(nitrogen)
+    float_phosphorus = float(phosphorus)
+    float_potassium = float(potassium)
+    float_temperature = float(temperature)
+    float_humidity = float(humidity)
+    float_ph = float(ph)
+    float_rainfall = float(rainfall)
+    
+    input_array = np.array((float_nitrogen, float_phosphorus, float_potassium, float_temperature, float_humidity, float_ph, float_rainfall))
     array_reshape = input_array.reshape(1, -1)
     prediction = model.predict(array_reshape)
     return prediction
     
 st.title('Crop Recommendation App')
-nitrogen = float(st.text_input('Enter the value of Nitrogen'))
-phosphorus = float(st.text_input('Enter the value of Phosphorous'))
-potassium = float(st.text_input('Enter the value of Potassium'))
-temperature = float(st.text_input('Enter the value of Temperature'))
-humidity = float(st.text_input('Enter the value of Humidity'))
-ph = float(st.text_input('Enter the ph value'))
-rainfall = float(st.text_input('Enter the rainfall level value')) 
+nitrogen = st.text_input('Enter the value of Nitrogen')
+phosphorus = st.text_input('Enter the value of Phosphorous')
+potassium = st.text_input('Enter the value of Potassium')
+temperature = st.text_input('Enter the value of Temperature')
+humidity = st.text_input('Enter the value of Humidity')
+ph = st.text_input('Enter the ph value')
+rainfall = st.text_input('Enter the rainfall level value') 
 
 if st.button('Recommend'):
     output = ''
