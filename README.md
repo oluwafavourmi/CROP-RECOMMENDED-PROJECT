@@ -24,3 +24,5 @@ This project uses the power of Machine Learning Algorithms to recommend crops th
     20.pomegranate
     21.rice
     22.watermelon
+
+The URL to the app is at: https://croprecommendationapp.streamlit.app/
